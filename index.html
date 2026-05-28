@@ -495,9 +495,11 @@
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ email })
 });
-
-      console.log('Email captured:', email);
-    }
+await fetch('https://formspree.io/f/mzdwodbo', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email: email })
+});
 
     // Allow Enter key to submit
     document.getElementById('email-input').addEventListener('keydown', function(e) {
