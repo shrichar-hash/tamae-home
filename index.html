@@ -475,32 +475,29 @@
 
   <script>
     async function handleSubmit() {
-      const input = document.getElementById('email-input');
-      const email = input.value.trim();
+  const input = document.getElementById('email-input');
+  const email = input.value.trim();
 
-      if (!email || !email.includes('@')) {
-        input.style.outline = '2px solid #EF4444';
-        input.focus();
-        setTimeout(() => { input.style.outline = 'none'; }, 2000);
-        return;
-      }
+  if (!email || !email.includes('@')) {
+    input.style.outline = '2px solid #EF4444';
+    input.focus();
+    setTimeout(() => { input.style.outline = 'none'; }, 2000);
+    return;
+  }
 
-      // Hide form, show success
-      document.getElementById('form-container').style.display = 'none';
-      document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('form-container').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
 
-      // In production, POST to your email capture endpoint here
-  
-await fetch('https://formspree.io/f/mzdwodbo', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email: email, source: 'tamae.io landing page' })
+  await fetch('https://formspree.io/f/mzdwodbo', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, source: 'tamae.io landing page' })
+  });
+}
+
+document.getElementById('email-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleSubmit();
 });
-
-    // Allow Enter key to submit
-    document.getElementById('email-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') handleSubmit();
-    });
   </script>
 
 </body>
