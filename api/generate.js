@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const r = await fetch("https://www.tamae.io/api/generate", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
