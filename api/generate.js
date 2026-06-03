@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   try {
-    const r = await fetch("https://www.tamae.io/api/generate", {
+    const r = await fetch("https://tamae-home.vercel.app/api/generate", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
